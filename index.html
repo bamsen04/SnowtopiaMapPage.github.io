@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8">
+    <head>
+        <meta content="IE-edge" http-equiv="X-UA_Compatible"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <title>Snowtopia Modding</title>
+        <link href="assets/Icons/Site-logo.ico" rel="icon" type="image/x-icon"/>
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .topnav {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                background-color: #072F7D;
+                height: 60px;
+            }
+
+            .topnav a {
+                color: #C7C7C7;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                font-size: 25px;
+                font-weight: bold;
+                flex-grow: 1;
+                height: 100%;
+                box-sizing: border-box;
+                padding: 10px;
+            }
+
+            .topnav a:nth-of-type(3) {
+                display: flex;
+                align-items: center;
+            }
+
+            .topnav a:nth-of-type(3) span {
+                display: inline-block;
+                margin-left: 10px;
+            }
+
+            .topnav a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+
+            .topnav-link-image-rounded {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+
+            .topnav-link-image {
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+            }
+
+            @media screen and (max-width: 860px) {
+                .topnav a:nth-of-type(1) span,
+                .topnav a:nth-of-type(2) span,
+                .topnav a:nth-of-type(3) span,
+                .topnav a:nth-of-type(4) span,
+                .topnav a:nth-of-type(5) span {
+                    display: none;
+                }
+            }
+            
+            .modal {
+                display: block;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0,0,0,0.6);
+            }
+
+            .modal-content {
+                top: 50%;
+                transform: translateY(-50%);
+                border-radius: 25px;
+                display: flex;
+                position: relative;
+                flex-wrap: wrap;
+                background-color: #b7cee5;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #072F7D;
+                height: fit-content;
+                width: 70%;
+                max-height: 80%;
+                min-width: min(450px, 85vw);
+                overflow-y: scroll;
+                overflow-x: hidden;
+            }
+
+            .modal-content::-webkit-scrollbar {
+                width: 10px;
+            }
+
+            .modal-content::-webkit-scrollbar-thumb {
+                background-color: #072F7D;
+                border-radius: 10px;
+            }
+
+            .modal-content::-webkit-scrollbar-thumb:hover {
+                background-color: #2853a8;
+            }
+
+            .modal-content::-webkit-scrollbar-track{
+                margin-bottom: 20px; 
+                margin-top: 20px; 
+            }
+
+            .modal-openbtn {
+                font-size:min(5vw, 40px); 
+                cursor:pointer; 
+                position: fixed; 
+                right: 25px; 
+                margin-top: 10px;
+            }
+
+            .img-box {
+                border: 1px solid black; 
+                width: 97%; 
+                aspect-ratio: 16 / 9; 
+                cursor: pointer;
+                margin-left: auto;
+                margin-right: auto; 
+                display: block; 
+                padding-top: 2px;
+            }
+
+            .Styled-button {
+                width: 100%;
+                min-height: 30px;
+                border: 1px solid black;
+                background-color: #072F7D;
+                margin-top: 5px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 15px;
+            }
+
+            .Styled-button:hover{
+                background-color: #2853a8; 
+            }
+
+            .disclaimer{
+                min-width: min(80vw, 400px); 
+                width: min-content; 
+                flex-grow: 1; 
+                height: fit-content; 
+                margin-top: 0; 
+                margin-left: auto; 
+                margin-right: auto; 
+                padding-left: 10px; 
+                padding-right: 10px;
+            }
+
+            .disclaimer p{
+                color: #072F7D;
+                font-weight: bold;
+                font-size: max(1.35vw, 16px);
+            }
+
+            .main {
+                margin-top: 60px;
+            }
+
+            .main h2 {
+                font-size: 50px;
+                margin-top: 25px;
+                margin-left: 20px;
+                margin-bottom: 5px;
+            }
+
+            .main h3 {
+                color: #484848;
+                font-size: 30px;
+                margin-top: 15px;
+                margin-left: 20px;
+                margin-bottom: 5px;
+            }
+
+            .main h4 {
+                color: #555555;
+                font-size: 24px;
+                margin-top: 5px;
+                margin-left: 20px;
+                margin-bottom: 2px;
+            }
+
+            .main p {
+                color: #666666;
+                margin-top: 0px;
+                font-size: 20px;
+                margin-left: 20px;
+                margin-bottom: 7px;
+            }
+
+            .main a {
+                color: #666666;
+                margin-top: 0px;
+                font-size: 20px;
+                margin-left: 20px;
+                margin-bottom: 7px;
+            }
+
+            .title-text {
+                font-size: 5.1vw; 
+                font-weight: bold; 
+                text-align: center;
+                position: absolute;
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .download-btn {
+                background-color: DodgerBlue;
+                border: none;
+                color: white;
+                padding: 12px 30px;
+                margin-left: 20px;
+                cursor: pointer;
+                font-size: 20px;
+                height: 50px;
+            }
+
+            .main-styled-button {
+                margin-left: 20px;
+                margin-top: 5px;
+                margin-bottom: 15px;
+                padding: 12px 10px;
+                border: 1px solid black;
+                background-color: #072F7D;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 15px;
+            }
+
+        </style>
+        
+    </head>
+    <body>
+        <div class="topnav">
+            <a href="https://snowtopiamodding.com/"><img src="assets/Icons/site-logo.webp" alt="logo" class="topnav-link-image-rounded"><span>Home</span></a>
+            <a href="https://discord.gg/fVaN5QQmwR"><img src="assets/Icons/discord-logo.png" alt="discord" class="topnav-link-image"><span>Our Discord</span></a>
+            <a href="https://snowtopia-modders.fandom.com/wiki/Mods_downloads"><img src="assets/Icons/download-icon.png" alt="download" class="topnav-link-image"><span>Download</span></a>
+            <a href="https://snowtopiamodding.com/maps"><img src="assets/Icons/map-icon.png" alt="maps" class="topnav-link-image"><span>Explore Maps</span></a>
+            <a href="https://snowtopia-modders.fandom.com/"><img src="assets/Icons/wiki-icon.png" alt="wiki" class="topnav-link-image"><span>Wiki</span></a>
+        </div>
+        
+        <div id="pop-up-menu" class="modal">
+            <div class="modal-content">
+                <div style="width: 45%; min-width: min(400px, 80vw); height: fit-content; margin-top: 0; margin-left: auto; margin-right: auto;">
+                    <h1 style="text-align: center; font-size: 24px; margin-top: 0; margin-bottom: 0;">Creation of the month</h1>
+                    <div style="height: fit-content; background-color: #072F7D; border: 1px solid black;">
+                    <img src="assets/CreationOfTheMonth.png" class="img-box" onclick="window.open('assets/CreationOfTheMonth.png', '_blank')">
+                    <h3 style="margin-top: 5px; margin-left: 7px; margin-bottom: 0px; color: #b4b4b4;">Credit: LukiDuki</h3>
+                    <h3 style="margin-top: 0px; margin-bottom: 5px; margin-left: 7px; color: #b4b4b4;">Map: Mt. Lafayette</h3>
+                    </div>
+                    <div style="text-align: center;">
+                        <button class="Styled-button" onclick="window.location.href='https://snowtopia-modders.fandom.com/wiki/Map_Guide';">
+                            <span style="color: white; font-weight: bold;">Map Making guide</span></button>
+                    </div>
+                </div>
+                <div class="disclaimer">
+                    <p>
+                        Modding is not officially supported by the devs but is encouraged. However, we ask a few simple things:
+                    </p>
+                    <span style="white-space: pre-line"></span>
+                    <p>
+                        - Please don't submit modding related issues or questions outside of the modding channel on the main Snowtopia discord. You are welcome to do so on our public modding discord server!
+                    </p>
+                    <span style="white-space: pre-line;"></span>
+                    <p>
+                        - Do not share any ripped assets (models etc. ) publicly
+                    </p>
+                    <span style="white-space: pre-line; height: 10px;"></span>
+                    <p>
+                        - Sharing of game code is allowed but please limit to singular classes / methods definitely not sharing whole assemblies of code - if you need to do this please ask @!Tea#1968 on discord for further guidance
+                    </p>
+              </div>
+              <div style="width: 100%; height: 25px;">
+                    <div style="width: 100px; margin-left: auto; margin-right: auto;">
+                    <button class="Styled-button" onclick="closeModal()"><span style="color: white; font-weight: bold;" >Close</span></button>
+                    </div>
+               </div>
+            </div>
+        </div>
+
+        <span class="modal-openbtn" onclick="openModal()">&#9776; open</span>
+        <div id="main-body" class="main">
+            <div style="width: 100%; position: relative; text-align: center; z-index: -2;">
+                <h1 class="title-text">Snowtopia Modding</h1>
+                <img src="assets/3s.png" style="width: 100%;">
+            </div>
+            <h4 style="margin-top: 0;">On this page... Avalanche, About us, Want to mod (DIY)?</h4>
+            
+
+            <h3>Avalanche</h3>
+            <div style="float: right; width: min(95vw, 450px); height: fit-content; margin-top: 0;">
+                <img src="assets/Cannon-Curveball.png" class="img-box" style="border: none;" onclick="window.open('assets/Cannon-Curveball.png', '_blank')">
+                <p style="margin-top: 5px; margin-left: 7px; margin-bottom: 0px;">Player: Curveball</h3>
+                <p style="margin-top: 0px; margin-bottom: 7px; margin-left: 7px;">Map: Cannon</h3>
+            </div>
+            <p style="margin-bottom: 12px;"> Avalanche is a singular mod containing many other sub-mods and features 
+                including a money mod, custom maps, more lifts, sandboxes, tree brush and much, much more! 
+                Avalanche also enables the ability to turn mods, features and other settings on / off.
+                Avalanche was developed by Chazzvader, but overtime with help from the community it has grown to over 100 maps in size
+                with many other contributions from everyone on all aspects. 
+                You can even build a resort on your backdoor!
+            </p>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <button class="download-btn" onclick="window.location.href='https://snowtopia-modders.fandom.com/wiki/Mods_downloads';"><i class="fa fa-download"></i> Download</button>
+            <button class="download-btn" style="background-color: #072F7D; margin-left: 10px;" onclick="window.location.href='https://github.com/charles-bruel/avalanche-github';"> 
+                <img src="assets/Icons/github-mark-white.png" style="height: 19px;"> GitHub
+            </button>
+            
+
+            <h3>Frequently Asked Questions</h3>
+            
+            <h4> How can i change my mod settings?</h4>
+            <p> Make sure snowtopia is not running then go to your install location (where Snowtopia.exe is) then open the ModData folder. 
+                You will see files named Basic(.cfg), Construction(.cfg) etc. Right click one and press edit with notepad.
+                You can now change any of these values and settings (and remember to save the file after).
+            </p>
+            <div style="float: right; width: min(95vw, 450px); height: fit-content; margin-top: 0;">
+                <img src="assets/lift-selection.png" class="img-box" style="border: none;" onclick="window.open('assets/lift-selection.png', '_blank')">
+                <p style="margin-top: 5px; margin-left: 7px; margin-bottom: 0px;">Player: Chazzvader</h3>
+            </div>
+            
+            <h4>How can I access cheats / unlock everything?</h4>
+            <p> Firstly open Basic.cfg with the guide above and edit the value 'int enable_cheats 0' to '1' then save. 
+                Press 'i' to open the cheat menu in game or 'o' to finish a construction immediately.
+            </p>
+            
+            <h4>Where can i download the money mod?</h4>
+            <p> The money mod is included in avalanche! To enable, when creating a new game, select the economy mod box on the left.</p>
+            
+            <h4>My installer states 'invalid version', what do i do?</h4>
+            <a href="https://cdn.discordapp.com/attachments/932879882235547739/1060621663223423106/DowngradeGuide_2.mp4"> 
+                If you are installing a 0.15.09 mod (look in the title of installer) click here for guide!</a>
+            <p>Otherwise open steam, rigth click on Snowtopia, go to properties, local files then click verify integrity of game files and try again.</p>
+            
+            <h4>How can I contact you (or nominate for creation of the month)?</h4>
+            <a href="https://discord.gg/fVaN5QQmwR">Join our discord!</a>
+
+
+            <h3>About us</h3>
+            <div style="float: right; width: min(95vw, 450px); height: fit-content; margin-top: 0;">
+                <img src="assets/Stowe-Curveball.png" class="img-box" style="border: none;" onclick="window.open('assets/Stowe-Curveball.png', '_blank')">
+                <p style="margin-top: 5px; margin-left: 7px; margin-bottom: 0px;">Player: Curveball</h3>
+                <p style="margin-top: 0px; margin-bottom: 5px; margin-left: 7px;">Map: Stowe</h3>
+            </div>
+            <p style="margin-bottom: 12px;"> To begin with, modding in Snowtopia started on the original discord channel with small low-key hacks;
+                however, this all changed when the game was release into Open Access. 
+                In February 2021, Tea began work on the open google doc modding guide, 
+                growing slowly as many players contributed their hacks and little features.
+            </p>
+            <p style="margin-bottom: 12px;">
+                Not long after, Chazzvader started developing Avalanche taking us to where we are today - 
+                it gradually became bigger and bigger increasingly to cover a wider range of aspects to the game. 
+                With help from Tea, when an installer was made and the Discord Server was introduced, 
+                maps from a huge variety of creators began to pop up. 
+                This resulted in a boom of locations accross the globe leading us to over 100 maps to date 
+                (You can check these out in the Explore Maps button on the navigation bar).
+            </p>
+            <p>
+                Finally, this website was made alongside a 0.15.09 LTS and hopefully, eventually, with the final release of the game - 
+                new work will begin, perhaps rising the horizons for any new blizzard we may face.
+            </p>
+            
+            <h2>Want to mod?</h2>
+            <div class="Modding-Guides-Table">
+
+            </div>
+
+    
+            <p> A full DIY coding guide including tutorials on specific mods like new slope widths and 
+                enabling a cheat menu in Snowtopia with screenshots alongside a very basic getting started guide.</p>
+            <button class="main-styled-button" onclick="window.location.href='https://docs.google.com/document/d/12dHJr26jEUJj9-Dhia60QxftyoTMaSffpg_0OcmlYv8/edit?usp=sharing';">
+                <span style="color: white; font-weight: bold;" >Google Docs guide</span></button>
+            <p> Learn how to make maps and submit for the community to play and be included in mods.</p>
+            <button class="main-styled-button" onclick="window.location.href='https://snowtopia-modders.fandom.com/wiki/Map_Guide';">
+                <span style="color: white; font-weight: bold;" >Map Making guide</span></button>
+            <p> Advanced tutorials - how to add your own lifts and props into the game and more.</p>
+            <button class="main-styled-button" onclick="window.location.href='https://snowtopia-modders.fandom.com/wiki/Modding_Guides';">
+                <span style="color: white; font-weight: bold;" >Advanced Wiki guides</span></button>
+        </div>
+        <script>
+            var modal = document.getElementById("pop-up-menu");
+            var span = document.getElementsByClassName("modal-close")[0];
+
+            function openModal() {
+                modal.style.display = "block";
+            }
+
+            function closeModal() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+    </body>
+</html>
