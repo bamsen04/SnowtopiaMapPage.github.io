@@ -9,14 +9,18 @@
 
 <url>
   <loc>https://snowtopiamodding.com/</loc>
-  <lastmod>2023-04-12</lastmod>
+  <lastmod>2023-06-01</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://snowtopiamodding.com/maps</loc>
-  <lastmod>2023-04-12</lastmod>
+  <lastmod>2023-06-01</lastmod>
   <priority>0.80</priority>
 </url>
-
+<url>
+  <loc>https://snowtopiamodding.com/CreationOfTheMonth</loc>
+  <lastmod>2023-06-01</lastmod>
+  <priority>0.60</priority>
+</url>
 
 </urlset>

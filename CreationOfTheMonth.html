@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8">
+    <head>
+        <meta content="IE-edge" http-equiv="X-UA_Compatible"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <meta name="description" content="Browse through the history of Creatons of the Month awards.">
+        <title>Snowtopia creations of the month</title>
+        <link href="assets/Icons/Site-logo.ico" rel="icon" type="image/x-icon"/>
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
+                overflow-x: hidden;
+            }
+
+            .topnav {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                background-color: #072F7D;
+                height: 60px;
+                z-index: 1;
+            }
+
+            .topnav a {
+                color: #C7C7C7;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                font-size: 25px;
+                font-weight: bold;
+                flex-grow: 1;
+                height: 100%;
+                box-sizing: border-box;
+                padding: 10px;
+            }
+
+            .topnav a:nth-of-type(3) {
+                display: flex;
+                align-items: center;
+            }
+
+            .topnav a:nth-of-type(3) span {
+                display: inline-block;
+                margin-left: 10px;
+            }
+
+            .topnav a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+
+            .topnav-link-image-rounded {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+
+            .topnav-link-image {
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+            }
+            
+            @media screen and (max-width: 860px) {
+                .topnav a:nth-of-type(1) span,
+                .topnav a:nth-of-type(2) span,
+                .topnav a:nth-of-type(3) span,
+                .topnav a:nth-of-type(4) span,
+                .topnav a:nth-of-type(5) span {
+                    display: none;
+                }
+            }
+
+            .main {
+                width: 100vw;
+                margin-top: 60px;
+            }
+
+            .main h2 {
+                font-size: 35px;
+                margin-top: 25px;
+                margin-left: 20px;
+                margin-bottom: 5px;
+                margin-right: 5px;
+            }
+
+            .main h3 {
+                color: #484848;
+                font-size: 24px;
+                margin-top: 15px;
+                margin-left: 20px;
+                margin-bottom: 5px;
+                margin-right: 5px;
+            }
+
+            .main h4 {
+                color: #2e2e2e;
+                font-size: 24px;
+                margin-top: 5px;
+                margin-left: 20px;
+                margin-bottom: 2px;
+                margin-right: 5px;
+            }
+
+            .main p {
+                color: #666666;
+                margin-top: 0px;
+                font-size: 20px;
+                margin-left: 20px;
+                margin-bottom: 7px;
+                margin-right: 5px;
+            }
+
+            .main a {
+                color: #666666;
+                margin-top: 0px;
+                font-size: 20px;
+                margin-left: 20px;
+                display: inline-block;
+                margin-bottom: 7px;
+                margin-right: 5px;
+            }
+
+            .month-navigation {
+                margin-top: 7px;
+                margin-right: 20px;
+                float: right;
+                width: fit-content;
+                right: 25px;
+            }
+
+            .creation-container {
+                width: 100vw;
+                height: fit-content;
+                display: none;
+            }
+
+            .gallery-container {
+                overflow: auto;
+                white-space: nowrap;
+                padding: 5px;
+            }
+
+            .gallery-container img {
+                padding: 5px;
+                max-width: 90vw;
+                max-height: 400px;
+                cursor: pointer;
+            }
+
+            .gallery-info {
+                margin-top: 10px;
+                white-space: nowrap;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="topnav">
+            <a href="https://snowtopiamodding.com/"><img src="assets/Icons/site-logo.webp" alt="home-logo" class="topnav-link-image-rounded"><span>Home</span></a>
+            <a href="https://discord.gg/fVaN5QQmwR"><img src="assets/Icons/discord-logo.png" alt="discord-logo" class="topnav-link-image"><span>Our Discord</span></a>
+            <a href="https://snowtopia-modders.fandom.com/wiki/Mods_downloads"><img src="assets/Icons/download-icon.png" alt="download" class="topnav-link-image"><span>Download</span></a>
+            <a href="https://snowtopiamodding.com/maps"><img src="assets/Icons/map-icon.png" alt="maps" class="topnav-link-image"><span>Explore Maps</span></a>
+            <a href="https://snowtopia-modders.fandom.com/"><img src="assets/Icons/wiki-icon.png" alt="wiki" class="topnav-link-image"><span>Wiki</span></a>
+        </div>
+        
+        <div class="main">
+            <div id="Navigator" style="margin-bottom: 10px; padding-top: 5px; width: 100vw; overflow: auto;">
+                <div style="float: left; margin-bottom: 0px;">
+                    <h2 id="PageTitle" style="margin-top: 0px; margin-bottom: 0px; margin-left: 20px; margin-right: 20px;"> 
+                    Creation of the month</h2>
+                </div>
+                <div class="month-navigation">
+                    <button id="prev-month" style="font-size: 15px;" onclick="next_month(1)">Previous Month</button>
+                    <select id="month-dropdown" style="font-size: 15px;" name="month-dropdown" onchange="update_month()"></select>
+                    <button id="next-month" style="font-size: 15px;" onclick="next_month(-1)">Next Month</button>
+                </div>
+            </div>
+            <div id="Months">
+                <div id="May 2023" class="creation-container">
+                    <div style="background-color: #333;">
+                        <div class="gallery-info">
+                            <h3 style="padding-top: 10px; margin-left: 10px; margin-bottom: 0px; color: #d1d0d0;">Player: Frank</h3>
+                            <h3 style="margin-top: 0px; margin-bottom: 0px; margin-left: 10px; color: #d1d0d0;">Map: Val Thorens</h3>
+                        </div>
+                        <div class="gallery-container">
+                            <img src="https://cdn.discordapp.com/attachments/636210015908397066/1105621783698231336/Schermafdruk_2023-05-10_00.21.22.png"
+                            onclick="window.open('https://cdn.discordapp.com/attachments/636210015908397066/1105621783698231336/Schermafdruk_2023-05-10_00.21.22.png', '_blank')">
+                            <img src="https://cdn.discordapp.com/attachments/636210015908397066/1105966840624189490/image.png"
+                            onclick="window.open('https://cdn.discordapp.com/attachments/636210015908397066/1105966840624189490/image.png', '_blank')">
+                            <img src="https://cdn.discordapp.com/attachments/636210015908397066/1105621492479307806/Schermafdruk_2023-05-10_00.20.50.png"
+                            onclick="window.open('https://cdn.discordapp.com/attachments/636210015908397066/1105621492479307806/Schermafdruk_2023-05-10_00.20.50.png', '_blank')">>
+                        </div>
+                    </div>
+                    <h4> Description</h4>
+                    <p>A creative sandbox resort showcasing how avalanche really releases your freedom! 
+                    The resort includes good implementation of the 3S lift, detatchable chairs and the traditional yet beautiful 4 poma egg gondola.
+                    Quite picturesquely, rocks are randomly littered perfectly making the map just stunning. 
+                    Also, notice the extremely wide red slope on the third image to the left.
+                    </p>
+                </div>
+                <div id="April 2023" class="creation-container">
+                    <div style="background-color: #333; display: flex; text-align: center;">
+                        <div style="display: block; text-align: left;">
+                            <h3 style="padding-top: 10px; margin-left: 20px; margin-bottom: 0px; color: #d1d0d0;">Player: Credit: LukiDuki</h3>
+                            <h3 style="margin-top: 0px; margin-bottom: 0px; margin-left: 20px; color: #d1d0d0;">Map: Mt. Lafayette</h3>
+                        </div>
+                        <img src="https://media.discordapp.net/attachments/636210015908397066/1091885703396331632/Screenshot_2023-04-01_174257.png" 
+                        style="display: block; margin-left: auto; margin-right: auto; padding: 10px; max-width: 90vw; max-height: 480px; cursor: pointer;"
+                        onclick="window.open('https://media.discordapp.net/attachments/636210015908397066/1091885703396331632/Screenshot_2023-04-01_174257.png', '_blank')">
+                    </div>
+                    <h4> Description</h4>
+                    <p>A small resort yet you can clearly see alot of effort has still been put into this. 
+                    Slopes have carefully been planned with the tree brush clearing small areas of trees but making more gladed skiing areas (not functional in game though).
+                    Lifts include a high capacity gondola and a fast detatchable chair from the base area with the gondola creating access to a higher chair.
+                    This is an immaculate resort demonstrating how it can be used as more of an artistic planning sense rather than a tycoon!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        var MonthsDiv = document.getElementById("Months");
+        var months = [];
+
+        var PageTitle = document.getElementById("PageTitle")
+        
+        var Previous = document.getElementById("prev-month");
+        var Dropdown = document.getElementById("month-dropdown");
+        var Next = document.getElementById("next-month");
+
+        for (const child of MonthsDiv.children) {
+            var opt = document.createElement('option');
+            opt.value = child.id;
+            opt.innerHTML = child.id;
+            Dropdown.append(opt);
+            months.push(child.id);
+        }
+
+        function clamp(value, minValue, maxValue) {
+            return Math.min(Math.max(value, minValue), maxValue);
+        }
+
+        function show_month(month) {
+            for (const child of MonthsDiv.children) {
+                if (child.id === month) {
+                    child.style.display = "block";
+                } else {
+                    child.style.display = "none";
+                }
+            }
+            Dropdown.value = month;
+            PageTitle.innerHTML = "Creation of the month " + month
+        }
+        
+        function update_month() {
+            show_month(Dropdown.value)
+            update_buttons(months.indexOf(Dropdown.value))
+        }
+
+        function update_buttons(index) {
+            Previous.removeAttribute("disabled");
+            Next.removeAttribute("disabled");
+            if (index === 0) {
+                Next.setAttribute("disabled", true);
+            } else if (index === months.length-1) {
+                Previous.setAttribute("disabled", true);
+            }
+        }
+
+        function next_month(index){
+            var new_month_index = clamp(months.indexOf(Dropdown.value) + index, 0, months.length-1);
+            show_month(months[new_month_index]);
+            update_buttons(new_month_index);
+        }
+
+        update_month()
+    </script>
+</html>
