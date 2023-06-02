@@ -237,6 +237,7 @@
         var Next = document.getElementById("next-month");
 
         for (const child of MonthsDiv.children) {
+            //this loop inflates the dropdown with selectable months
             var opt = document.createElement('option');
             opt.value = child.id;
             opt.innerHTML = child.id;
@@ -245,29 +246,69 @@
         }
 
         function clamp(value, minValue, maxValue) {
+            //Clamps the value between a minimum and maximum
             return Math.min(Math.max(value, minValue), maxValue);
         }
 
+        function getURLMonth() {
+            // Create a regular expression pattern to match the parameter in the URL
+            const regex = new RegExp('[\\?&]month=([^&#]*)');
+
+            // Execute the regular expression on the URL to extract the parameter value
+            const results = regex.exec(window.location.search);
+
+            // Initialize a variable to store the extracted date value
+            var date = results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+
+            // Capitalize the first letter of the date value
+            date = date.charAt(0).toUpperCase() + date.slice(1);
+
+            // Replace underscores with spaces in the date value
+            date = date.replace('_', ' ');
+            return date;
+        }
+
         function show_month(month) {
+            //This function is always called to set the specific month
             for (const child of MonthsDiv.children) {
                 if (child.id === month) {
+                    //Hides all irrelevant months
                     child.style.display = "block";
                 } else {
+                    //Shows relevant month
                     child.style.display = "none";
                 }
             }
+            //Sets the selected month in dropdown menu
             Dropdown.value = month;
+            //Adds month value to the title
             PageTitle.innerHTML = "Creation of the month " + month
+
+
+            //Adding the month to the URL:
+            const newUrl = window.location.origin + window.location.pathname + '?month=' + month.toLowerCase().replace(/\s+/g, '_');
+            // Construct the new URL by combining the origin (protocol, domain, and port), the current path, and the modified date parameter.
+            // The modified date parameter is created by converting the month to lowercase and replacing spaces with underscores.
+
+            window.history.pushState({ path: newUrl }, '', newUrl);
+            // Use the pushState method of the History API to update the URL without reloading the page.
+            // This adds a new entry to the browser's history stack with the new URL, allowing users to navigate back and forward.
+            // The first argument is an object that represents the state associated with the new URL (in this case, we store the new URL itself).
+            // The second and third arguments are empty strings, which represent the new title and URL fragment (hash), respectively.
         }
-        
+
         function update_month() {
+            //Syncs the selected month in dropdown with shown month
             show_month(Dropdown.value)
             update_buttons(months.indexOf(Dropdown.value))
         }
 
         function update_buttons(index) {
+            //Makes sure both buttons are enabled (even if they are't disabled in the first place)
             Previous.removeAttribute("disabled");
             Next.removeAttribute("disabled");
+
+            //Checks for boundaries to stop the user from going past the first or last month
             if (index === 0) {
                 Next.setAttribute("disabled", true);
             } else if (index === months.length-1) {
@@ -276,11 +317,24 @@
         }
 
         function next_month(index){
+            //Changes to the next month forwards index: 1 or backwards index: -1
+            //The clamp ensures the month index is still in an acceptable range
             var new_month_index = clamp(months.indexOf(Dropdown.value) + index, 0, months.length-1);
             show_month(months[new_month_index]);
             update_buttons(new_month_index);
         }
 
-        update_month()
+        window.onload = function() {
+            //Called whenever the browser is fully reloaded
+            //Gets the month within the URL
+            const URLmonth = getURLMonth()
+            //checks whether the month in the URL is valid or is not given
+            if (URLmonth === '' || months.includes(URLmonth) === false){
+                update_month();
+            } else {
+                show_month(URLmonth);
+                update_buttons(months.indexOf(URLmonth));
+            }
+        };
     </script>
 </html>
