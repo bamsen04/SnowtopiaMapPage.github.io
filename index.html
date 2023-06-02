@@ -150,6 +150,26 @@
                 padding-top: 2px;
             }
 
+            .img-box-container {
+                width: 100%; 
+                aspect-ratio: 16 / 9; 
+                cursor: pointer;
+                margin-left: auto;
+                margin-right: auto; 
+                display: block; 
+                display: flex;
+                align-items: center;
+            }
+
+            .img-box-flex {
+                border: 1px solid black; 
+                width: 97%; 
+                cursor: pointer;
+                margin: auto;
+                display: block; 
+                padding-top: 2px;
+            }
+
             .Styled-button {
                 width: 100%;
                 min-height: 30px;
@@ -303,9 +323,11 @@
                 <div style="width: 45%; min-width: min(400px, 80vw); height: fit-content; margin-top: 0; margin-left: auto; margin-right: auto;">
                     <h1 style="text-align: center; font-size: 22px; margin-top: 0; margin-bottom: 0; font-weight: 700;" onclick="window.open('https://snowtopiamodding.com/CreationOfTheMonth', '_blank')">Creation of the month (click for history)</h1>
                     <div class="clickable-div" onclick="window.open('https://snowtopiamodding.com/CreationOfTheMonth', '_blank')">
-                        <img src="https://cdn.discordapp.com/attachments/636210015908397066/1091885703396331632/Screenshot_2023-04-01_174257.png" alt="Map-Of-The-Month" class="img-box">
-                        <h3 style="margin-top: 5px; margin-left: 7px; margin-bottom: 0px; color: #b4b4b4;">Credit: LukiDuki</h3>
-                        <h3 style="margin-top: 0px; margin-bottom: 5px; margin-left: 7px; color: #b4b4b4;">Map: Mt. Lafayette</h3>
+                        <div id="img container" class="img-box-container">
+                            <img src="https://cdn.discordapp.com/attachments/636210015908397066/1105621783698231336/Schermafdruk_2023-05-10_00.21.22.png" alt="Map-Of-The-Month" class="img-box-flex">
+                        </div>
+                        <h3 style="margin-top: 5px; margin-left: 7px; margin-bottom: 0px; color: #b4b4b4;">Player: Frank</h3>
+                        <h3 style="margin-top: 0px; margin-bottom: 5px; margin-left: 7px; color: #b4b4b4;">Map: Val Thorens</h3>
                     </div>
                     <div style="text-align: center;">
                         <button class="Styled-button" onclick="window.location.href='https://snowtopia-modders.fandom.com/wiki/Map_Guide';">
