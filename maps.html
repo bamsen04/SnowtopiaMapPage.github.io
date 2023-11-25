@@ -102,7 +102,7 @@ including information on popularity, creator and description of the map!" name="
         .modal {
             display: block;
             position: fixed;
-            z-index: 2;
+            z-index: 1;
             left: 0;
             top: 0;
             width: 100%;
@@ -243,16 +243,16 @@ including information on popularity, creator and description of the map!" name="
 <a href="https://snowtopiamodding.com/maps"><img alt="maps" class="topnav-link-image" src="assets/Icons/map-icon.png"/><span>Explore Maps</span></a>
 <a href="https://snowtopia-modders.fandom.com/"><img alt="wiki" class="topnav-link-image" src="assets/Icons/wiki-icon.png"/><span>Wiki</span></a>
 </div>
-<div id="pop-up-menu" class="modal">
+<div class="modal" id="pop-up-menu">
 <div class="modal-content">
 <div style="width: 45%; min-width: min(400px, 80vw); height: fit-content; margin-top: 0; margin-left: auto; margin-right: auto;">
-<h1 style="text-align: center; font-size: 22px; margin-top: 0; margin-bottom: 0; font-weight: 700;" onclick="window.open('https://snowtopiamodding.com/creationofthemonth', '_blank')">Creation of the month (click to see more)</h1>
-<div class="clickable-div" onclick="window.open('https://snowtopiamodding.com/creationofthemonth', '_blank')">
-<div id="img container" class="img-box-container">
-<img src="https://media.discordapp.net/attachments/1170840708228325559/1170844864573870170/20231105155825_1.jpg" alt="Map-Of-The-Month" class="img-box-flex">
+<h1 onclick="window.open('https://snowtopiamodding.com/CreationOfTheMonth', '_blank')" style="text-align: center; font-size: 22px; margin-top: 0; margin-bottom: 0; font-weight: 700;">Creation of the month (click for history)</h1>
+<div class="clickable-div" onclick="window.open('https://snowtopiamodding.com/CreationOfTheMonth', '_blank')">
+<div class="img-box-container" id="img container">
+<img alt="Map-Of-The-Month" class="img-box-flex" src="https://cdn.discordapp.com/attachments/636210015908397066/1105621783698231336/Schermafdruk_2023-05-10_00.21.22.png"/>
 </div>
-<h3 style="margin-top: 5px; margin-left: 7px; margin-bottom: 0px; color: #b4b4b4;">Player: BrandoCommando716</h3>
-<h3 style="margin-top: 0px; margin-bottom: 5px; margin-left: 7px; color: #b4b4b4;">Map: Bristol NY</h3>
+<h3 style="margin-top: 5px; margin-left: 7px; margin-bottom: 0px; color: #b4b4b4;">Player: Frank</h3>
+<h3 style="margin-top: 0px; margin-bottom: 5px; margin-left: 7px; color: #b4b4b4;">Map: Val Thorens</h3>
 </div>
 <div style="text-align: center;">
 <button class="Styled-button" onclick="window.location.href='https://snowtopia-modders.fandom.com/wiki/Map_Guide';">
@@ -261,24 +261,24 @@ including information on popularity, creator and description of the map!" name="
 </div>
 <div class="disclaimer">
 <p>
-Modding is not officially supported by the devs but is encouraged. However, we ask a few simple things:
+    Modding is not officially supported by the devs but is encouraged. However, we ask a few simple things:
 </p>
 <span style="white-space: pre-line"></span>
 <p>
-- Please don't submit modding related issues or questions outside of the modding channel on the main Snowtopia discord. You are welcome to do so on our public modding discord server!
+    - Please don't submit modding related issues or questions outside of the modding channel on the main Snowtopia discord. You are welcome to do so on our public modding discord server!
 </p>
 <span style="white-space: pre-line;"></span>
 <p>
-- Do not share any ripped assets (models etc. ) publicly
+    - Do not share any ripped assets (models etc. ) publicly
 </p>
 <span style="white-space: pre-line; height: 10px;"></span>
 <p>
-- Sharing of game code is allowed but please limit to singular classes / methods definitely not sharing whole assemblies of code - if you need to do this please ask @!Tea#1968 on discord for further guidance
+    - Sharing of game code is allowed but please limit to singular classes / methods definitely not sharing whole assemblies of code - if you need to do this please ask @!Tea#1968 on discord for further guidance
 </p>
 </div>
 <div style="width: 100%; height: 25px;">
 <div style="width: 100px; margin-left: auto; margin-right: auto;">
-<button class="Styled-button" onclick="closeModal()"><span style="color: white; font-weight: bold;" >Close</span></button>
+<button class="Styled-button" onclick="closeModal()"><span style="color: white; font-weight: bold;">Close</span></button>
 </div>
 </div>
 </div>
@@ -304,7 +304,7 @@ Modding is not officially supported by the devs but is encouraged. However, we a
             }
         }
     </script>
-<h2>Welcome to our collection of community made maps! Last updated (UTC) Fri Jun  2 09:12:26 2023</h2>
+<h2>Welcome to our collection of community made maps! Last updated (UTC) Sat Nov 25 09:47:25 2023</h2>
 </div>
 <table class="cell-border" id="maps" style="width: calc(100%-5px); margin-left: 5px;">
 <thead>
@@ -1126,7 +1126,7 @@ Modding is not officially supported by the devs but is encouraged. However, we a
 <td> As requested, Portes du Mont Blanc. good variation, but very large scale. at the moment scaled at 3500 and becoming already very laggy, but If you want, you can increase the size. Maybe I will make a smaller focussed map from a few specific part in the near future. </td>
 <td><img alt="thumb" height="auto" src="https://media.discordapp.net/attachments/932881912714895390/1081621806127009802/thumb.png" width="300"/></td>
 <td><a href="https://discord.com/channels/932741876174454914/932881912714895390/1081621806936506378">Download</a></td>
-<td>6</td>
+<td>7</td>
 </tr>
 <tr>
 <td><a href="https://discord.com/channels/932741876174454914/932881912714895390/1081622829478445097">1081622829478445097</a></td>
@@ -1134,7 +1134,7 @@ Modding is not officially supported by the devs but is encouraged. However, we a
 <td> And Mount Abram, A smaller single mountain peak in a smaller map (comparable to the crotched map). Still nice variation and several option to start the map with variable steepness. </td>
 <td><img alt="thumb" height="auto" src="https://media.discordapp.net/attachments/932881912714895390/1081622829012889600/thumb.png" width="300"/></td>
 <td><a href="https://discord.com/channels/932741876174454914/932881912714895390/1081622829478445097">Download</a></td>
-<td>5</td>
+<td>7</td>
 </tr>
 <tr>
 <td><a href="https://discord.com/channels/932741876174454914/932881912714895390/1089526790067855552">1089526790067855552</a></td>
@@ -1142,6 +1142,37 @@ Modding is not officially supported by the devs but is encouraged. However, we a
 <td> Mount Modders is made by Unity, it's a test but so cool. The snowtopia modders live here. (that's a joke) </td>
 <td><img alt="thumb" height="auto" src="https://media.discordapp.net/attachments/932881912714895390/1089526789476470794/thum.jpg" width="300"/></td>
 <td><a href="https://discord.com/channels/932741876174454914/932881912714895390/1089526790067855552">Download</a></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://discord.com/channels/932741876174454914/932881912714895390/1128832626703212654">1128832626703212654</a></td>
+<td>adrienskis</td>
+<td> Ruby Ridge- A map I made. It has one big ridge in the middle with two smaller valleys inside. </td>
+<td><img alt="thumb" height="auto" src="https://media.discordapp.net/attachments/932881912714895390/1128832625834987610/thumb.png" width="300"/></td>
+<td><a href="https://discord.com/channels/932741876174454914/932881912714895390/1128832626703212654">Download</a></td>
+<td>6</td>
+</tr>
+<tr>
+<td><a href="https://discord.com/channels/932741876174454914/932881912714895390/1130519782979022980">1130519782979022980</a></td>
+<td>adrienskis</td><td> The Terrace, a nice area with snowfronts with easy access to difficult terrain and a high alpine terrace with nice flat terrain. </td>
+<td><img alt="thumb" height="auto" src="https://media.discordapp.net/attachments/932881912714895390/1130519781867532419/thumb.png" width="300"/></td>
+<td><a href="https://discord.com/channels/932741876174454914/932881912714895390/1130519782979022980">Download</a></td>
+<td>5</td>
+</tr>
+<tr>
+<td><a href="https://discord.com/channels/932741876174454914/932881912714895390/1144152428942458982">1144152428942458982</a></td>
+<td>cheesewhizzzz</td>
+<td> Just went on a trip to Glacier National Park in Montana and got inspired to make a map. Has some steeper shelfy terrain up high with mellow valleys down low. Enjoy! https://cdn.discordapp.com/attachments/932881912714895390/1144031612858814484/thumb.png https://cdn.discordapp.com/attachments/932881912714895390/1144031612275785950/Glacier_Pass.zip </td>
+<td><img alt="thumb" height="auto" src="https://media.discordapp.net/attachments/932881912714895390/1144031612858814484/thumb.png" width="300"/></td>
+<td><a href="https://cdn.discordapp.com/attachments/932881912714895390/1144031612275785950/Glacier_Pass.zip">Download</a></td>
+<td>5</td>
+</tr>
+<tr>
+<td><a href="https://discord.com/channels/932741876174454914/932881912714895390/1150671468909301800">1150671468909301800</a></td>
+<td>parclostack</td>
+<td> Gore Mountain, New York, owned by the New York Olympic Regional Development Authority. My first map! https://cdn.discordapp.com/attachments/932881912714895390/1150561247054536754/thumb.png https://cdn.discordapp.com/attachments/932881912714895390/1150561246668656681/Gore_NY_ORDA.zip </td>
+<td><img alt="thumb" height="auto" src="https://media.discordapp.net/attachments/932881912714895390/1150561247054536754/thumb.png" width="300"/></td>
+<td><a href="https://cdn.discordapp.com/attachments/932881912714895390/1150561246668656681/Gore_NY_ORDA.zip">Download</a></td>
 <td>2</td>
 </tr>
 </tbody>
